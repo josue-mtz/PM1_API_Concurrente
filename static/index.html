@@ -1,0 +1,183 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Pizzas &amp; Animatronicos - Reservaciones</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Press+Start+2P&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+
+  <div class="stage-lights"></div>
+
+  <header class="marquee">
+    <h1>PIZZAS &amp; ANIMATRONICOS</h1>
+    <p class="subtitle">— Sistema de Reservaciones — Desde 1987 —</p>
+  </header>
+
+  <main>
+
+    <!-- FORMULARIO -->
+    <section class="panel" id="panel-form">
+      <h2>Nueva Reservación</h2>
+      <form id="form-reserva">
+        <input type="hidden" id="reserva-id" />
+
+        <div class="campo">
+          <label for="nombre_cliente">Nombre del cliente</label>
+          <input type="text" id="nombre_cliente" required minlength="2" maxlength="100" placeholder="Ej. Mike Schmidt" />
+        </div>
+
+        <div class="campo">
+          <label for="mesa">Mesa</label>
+          <input type="number" id="mesa" required min="1" max="50" placeholder="1 - 50" />
+        </div>
+
+        <div class="campo">
+          <label for="fecha_hora">Fecha y hora</label>
+          <input type="datetime-local" id="fecha_hora" required />
+        </div>
+
+        <div class="campo">
+          <label for="numero_personas">N° de personas</label>
+          <input type="number" id="numero_personas" required min="1" max="20" placeholder="1 - 20" />
+        </div>
+
+        <div class="campo">
+          <label for="zona">Zona</label>
+          <select id="zona" required>
+            <option value="VIP"> VIP</option>
+            <option value="Escenario"> Escenario</option>
+            <option value="Cueva del Pirata">Cueva del Pirata</option>
+            <option value="Arcade"> Arcade</option>
+            <option value="Pelotero"> Pelotero</option>
+          </select>
+        </div>
+
+        <div class="campo">
+          <label for="estado">Estado</label>
+          <select id="estado">
+            <option value="pendiente"> Pendiente</option>
+            <option value="confirmada"> Confirmada</option>
+            <option value="cancelada"> Cancelada</option>
+            <option value="completada"> Completada</option>
+          </select>
+        </div>
+
+        <div class="campo campo-ancho">
+          <label for="notas">Notas (opcional)</label>
+          <textarea id="notas" maxlength="300" placeholder="Ej. Cumpleaños, alergias, silla para bebé..."></textarea>
+        </div>
+
+        <div class="campo campo-ancho acciones">
+          <button type="submit" class="btn btn-neon" id="btn-guardar"> Reservar Mesa</button>
+          <button type="button" class="btn btn-secundario" id="btn-cancelar-edicion" hidden>Cancelar edición</button>
+        </div>
+      </form>
+      <p class="mensaje" id="form-mensaje"></p>
+    </section>
+
+    <!-- LISTADO + FILTROS -->
+    <section class="panel" id="panel-lista">
+      <h2> Reservaciones</h2>
+
+      <div class="filtros">
+        <select id="filtro-zona">
+          <option value="">Todas las zonas</option>
+          <option value="VIP">VIP</option>
+          <option value="Escenario">Escenario</option>
+          <option value="Cueva del Pirata">Cueva del Pirata</option>
+          <option value="Arcade">Arcade</option>
+          <option value="Pelotero">Pelotero</option>
+        </select>
+
+        <select id="filtro-estado">
+          <option value="">Todos los estados</option>
+          <option value="pendiente">Pendiente</option>
+          <option value="confirmada">Confirmada</option>
+          <option value="cancelada">Cancelada</option>
+          <option value="completada">Completada</option>
+        </select>
+
+        <input type="date" id="filtro-fecha" />
+
+        <button class="btn btn-secundario" id="btn-filtrar"> Filtrar</button>
+        <button class="btn btn-secundario" id="btn-limpiar-filtros"> Limpiar</button>
+      </div>
+
+      <div id="tabla-wrapper">
+        <table id="tabla-reservas">
+          <thead>
+            <tr>
+              <th>Cliente</th>
+              <th>Mesa</th>
+              <th>Fecha / Hora</th>
+              <th>Personas</th>
+              <th>Zona</th>
+              <th>Estado</th>
+              <th>Notas</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="tabla-body">
+            <tr><td colspan="8" class="vacio">Cargando reservaciones...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- REPORTE / CONCURRENCIA -->
+    <section class="panel" id="panel-reporte">
+      <h2> Reporte del Día (prueba de concurrencia)</h2>
+      <p class="descripcion">
+        Este reporte simula un procesamiento pesado de CPU (varios segundos)
+        ejecutado en un hilo secundario con <code>asyncio.to_thread()</code>.
+        Mientras se genera, el contador de <strong>Ping</strong> de la derecha
+        debe seguir respondiendo con normalidad — eso demuestra que el
+        servidor NO se bloquea.
+      </p>
+
+      <div class="reporte-grid">
+        <div class="reporte-controles">
+          <div class="campo">
+            <label for="reporte-fecha">Fecha a reportar</label>
+            <input type="date" id="reporte-fecha" />
+          </div>
+          <div class="campo">
+            <label for="reporte-duracion">Duración simulada (segundos)</label>
+            <input type="number" id="reporte-duracion" value="5" min="1" max="15" />
+          </div>
+          <button class="btn btn-neon" id="btn-generar-reporte"> Generar Reporte Pesado</button>
+          <p id="reporte-estado" class="mensaje"></p>
+
+          <div id="reporte-resultado" class="reporte-resultado" hidden>
+            <div class="stat"><span>Total reservaciones</span><strong id="stat-total">-</strong></div>
+            <div class="stat"><span>Mesas ocupadas</span><strong id="stat-mesas">-</strong></div>
+            <div class="stat"><span>Ocupación</span><strong id="stat-ocupacion">-</strong></div>
+            <div class="stat"><span>Hora pico</span><strong id="stat-hora-pico">-</strong></div>
+            <div class="stat"><span>Zona top</span><strong id="stat-zona-top">-</strong></div>
+            <div class="stat"><span>Tiempo de proceso</span><strong id="stat-tiempo">-</strong></div>
+          </div>
+        </div>
+
+        <div class="reporte-ping">
+          <h3>Monitor de disponibilidad del servidor</h3>
+          <button class="btn btn-secundario" id="btn-ping-auto">Iniciar auto-ping (cada 1 s)</button>
+          <p>Pings exitosos: <strong id="ping-contador">0</strong></p>
+          <ul id="ping-log"></ul>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>Pizzas &amp; Animatronicos — Proyecto Modular I: API Concurrente con Base de Datos</p>
+  </footer>
+
+  <script src="/js/app.js"></script>
+</body>
+</html>
+
