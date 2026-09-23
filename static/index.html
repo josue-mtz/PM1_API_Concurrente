@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Pizzas &amp; Animatronicos - Reservaciones</title>
+<title>Pizzas &amp; Animatronicos</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Press+Start+2P&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/css/style.css" />
@@ -14,7 +14,7 @@
 
   <header class="marquee">
     <h1>PIZZAS &amp; ANIMATRONICOS</h1>
-    <p class="subtitle">— Sistema de Reservaciones — Desde 1987 —</p>
+    <p class="subtitle">— Sistema de Reservaciones —</p>
   </header>
 
   <main>
@@ -27,12 +27,12 @@
 
         <div class="campo">
           <label for="nombre_cliente">Nombre del cliente</label>
-          <input type="text" id="nombre_cliente" required minlength="2" maxlength="100" placeholder="Ej. Mike Schmidt" />
+          <input type="text" id="nombre_cliente" required minlength="2" maxlength="100" placeholder="Eje. Micheal Afton" />
         </div>
 
         <div class="campo">
           <label for="mesa">Mesa</label>
-          <input type="number" id="mesa" required min="1" max="50" placeholder="1 - 50" />
+          <input type="number" id="mesa" required min="1" max="50" placeholder="1 - 5" />
         </div>
 
         <div class="campo">
@@ -130,14 +130,7 @@
 
     <!-- REPORTE / CONCURRENCIA -->
     <section class="panel" id="panel-reporte">
-      <h2> Reporte del Día (prueba de concurrencia)</h2>
-      <p class="descripcion">
-        Este reporte simula un procesamiento pesado de CPU (varios segundos)
-        ejecutado en un hilo secundario con <code>asyncio.to_thread()</code>.
-        Mientras se genera, el contador de <strong>Ping</strong> de la derecha
-        debe seguir respondiendo con normalidad — eso demuestra que el
-        servidor NO se bloquea.
-      </p>
+      <h2> Reporte del Día (Simulado)</h2>
 
       <div class="reporte-grid">
         <div class="reporte-controles">
@@ -174,7 +167,7 @@
   </main>
 
   <footer>
-    <p>Pizzas &amp; Animatronicos — Proyecto Modular I: API Concurrente con Base de Datos</p>
+    <p>Pizzas &amp; Animatronicos — Proyecto Modular I</p>
   </footer>
 
   <script src="/js/app.js"></script>

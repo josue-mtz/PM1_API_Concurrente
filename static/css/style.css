@@ -20,9 +20,9 @@ body {
   font-family: 'Segoe UI', Tahoma, sans-serif;
   color: var(--texto-claro);
   background:
-    radial-gradient(circle at 20% 10%, #4a1a7a 0%, transparent 40%),
-    radial-gradient(circle at 80% 0%, #7a1a5a 0%, transparent 40%),
-    linear-gradient(180deg, var(--morado-oscuro) 0%, #12081f 100%);
+    radial-gradient(circle at 20% 10%, #0a0013 0%, transparent 40%),
+    radial-gradient(circle at 80% 0%, #1b0112 0%, transparent 40%),
+    linear-gradient(180deg, var(--morado-oscuro) 0%, #100125 100%);
   background-attachment: fixed;
   padding-bottom: 40px;
 }
