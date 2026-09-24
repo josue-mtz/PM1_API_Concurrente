@@ -91,8 +91,8 @@ function renderizarTabla(reservas) {
         <td>${badgeEstado(r.estado)}</td>
         <td>${r.notas ? r.notas : "—"}</td>
         <td class="fila-acciones">
-          <button class="btn-editar" onclick="editarReserva('${r._id}')"></button>
-          <button class="btn-eliminar" onclick="eliminarReserva('${r._id}')"></button>
+          <button class="btn-editar" type="button" title="Editar reservación" aria-label="Editar reservación" onclick="editarReserva('${r._id}')">Editar</button>
+          <button class="btn-eliminar" type="button" title="Eliminar reservación" aria-label="Eliminar reservación" onclick="eliminarReserva('${r._id}')">Eliminar</button>
         </td>
       </tr>`
     )

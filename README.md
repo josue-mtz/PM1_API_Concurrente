@@ -46,16 +46,16 @@ PM1_API_Concurrente/
 
 ### 1. Clonar el repositorio y crear entorno virtual
 
-```bash
+```powershell
 git clone <https://github.com/josue-mtz/PM1_API_Concurrente.git>
 cd PM1_API_Concurrente
-python -m venv venv
-source venv/bin/activate      # En Windows: venv\Scripts\activate
+py -m venv venv
+.\venv\Scripts\Activate.ps1
 ```
 
 ### 2. Instalar dependencias
 
-```bash
+```powershell
 pip install -r requirements.txt
 ```
 
@@ -63,8 +63,8 @@ pip install -r requirements.txt
 
 Copia el archivo de ejemplo y coloca tu cadena de conexión de **MongoDB Atlas**:
 
-```bash
-cp .env.example .env
+```powershell
+Copy-Item .env.example .env
 ```
 
 Edita `.env`:
@@ -76,7 +76,7 @@ DB_NAME=pizzas_animatronicos
 
 ### 4. Ejecutar la aplicación
 
-```bash
+```powershell
 uvicorn app.main:app --reload
 ```
 
@@ -150,16 +150,16 @@ que el reporte termine**.
 
 En una terminal, dispara el reporte pesado:
 
-```bash
-curl "http://127.0.0.1:8000/api/reservaciones/reporte/dia?duracion=8"
+```powershell
+Invoke-RestMethod "http://127.0.0.1:8000/api/reservaciones/reporte/dia?duracion=8"
 ```
 
 En otra terminal, mientras el comando anterior sigue corriendo, dispara varias
 peticiones normales:
 
-```bash
-curl "http://127.0.0.1:8000/api/ping"
-curl "http://127.0.0.1:8000/api/reservaciones"
+```powershell
+Invoke-RestMethod "http://127.0.0.1:8000/api/ping"
+Invoke-RestMethod "http://127.0.0.1:8000/api/reservaciones"
 ```
 
 Estas últimas deben responder de inmediato, sin esperar los 8 segundos del

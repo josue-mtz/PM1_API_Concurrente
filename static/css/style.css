@@ -228,16 +228,39 @@ tbody tr:hover { background: rgba(255, 47, 160, 0.08); }
 .badge.cancelada { background: #5a0b0b; color: var(--rojo-neon); }
 .badge.completada { background: #333; color: #ccc; }
 
-.fila-acciones { display: flex; gap: 6px; }
-.fila-acciones button {
-  font-size: 0.75rem;
-  padding: 4px 10px;
-  border-radius: 6px;
-  border: none;
-  cursor: pointer;
+.fila-acciones {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  white-space: nowrap;
 }
-.btn-editar { background: var(--cian-neon); color: #12081f; }
-.btn-eliminar { background: var(--rojo-neon); color: white; }
+.fila-acciones button {
+  font-family: var(--fuente-cuerpo);
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s, filter 0.15s;
+}
+.fila-acciones button:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.12);
+}
+.fila-acciones button:active { transform: translateY(0) scale(0.97); }
+.btn-editar {
+  background: rgba(47, 245, 224, 0.12);
+  border-color: var(--cian-neon) !important;
+  color: var(--cian-neon);
+}
+.btn-editar:hover { box-shadow: 0 0 12px var(--cian-neon); }
+.btn-eliminar {
+  background: rgba(255, 77, 77, 0.12);
+  border-color: var(--rojo-neon) !important;
+  color: #ff8585;
+}
+.btn-eliminar:hover { box-shadow: 0 0 12px var(--rojo-neon); }
 
 /* --- Reporte --- */
 .reporte-grid {
